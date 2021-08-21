@@ -3,6 +3,7 @@
 import * as express from 'express';
 import cookieParser = require('cookie-parser');
 import bodyParser = require('body-parser');
+import cors = require('cors');
 import { SwaggerUI } from './swagger.ui';
 import { SwaggerRouter } from './swagger.router';
 import { SwaggerParameters } from './swagger.parameters';
@@ -23,7 +24,8 @@ export class ExpressAppConfig {
         this.routingOptions = appOptions.routing;
         this.setOpenApiValidatorOptions(definitionPath, appOptions);
         this.app = express();
-
+		this.app.use(cors(appOptions.cors));
+        
         const spec = fs.readFileSync(definitionPath, 'utf8');
         const swaggerDoc = jsyaml.safeLoad(spec);
 
