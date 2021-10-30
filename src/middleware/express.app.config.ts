@@ -22,7 +22,8 @@ export class ExpressAppConfig {
         this.definitionPath = definitionPath;
         this.routingOptions = appOptions.routing;
         this.setOpenApiValidatorOptions(definitionPath, appOptions);
-        this.app = express();
+				// Create new express app only if not passed by options
+        this.app = appOptions.app || express();
 
         const spec = fs.readFileSync(definitionPath, 'utf8');
         const swaggerDoc = jsyaml.safeLoad(spec);
