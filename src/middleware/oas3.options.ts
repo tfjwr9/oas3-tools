@@ -7,13 +7,15 @@ export class Oas3AppOptions {
     public openApiValidator: OpenApiValidatorOpts;
     public logging: LoggingOptions;
     public swaggerUI: SwaggerUiOptions;
+	public cors: any;
 
-    constructor(routingOpts: any, openApiValidatorOpts: OpenApiValidatorOpts, logging: LoggingOptions, swaggerUI: SwaggerUiOptions) {
+    constructor(routingOpts: any, openApiValidatorOpts: OpenApiValidatorOpts, logging: LoggingOptions, swaggerUI: SwaggerUiOptions, cors: any) {
         this.routing = routingOpts;
         this.openApiValidator = openApiValidatorOpts;
         this.swaggerUI = swaggerUI;
         if (!logging)
             logging = new LoggingOptions(null, null);
         this.logging = logging;
+		this.cors = cors;
     }
 }
