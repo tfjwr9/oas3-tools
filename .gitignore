@@ -11,6 +11,4 @@ test/*/browser
 .tern-project
 package-lock.json
 .project
-.settings/.jsdtscope
-.settings/org.eclipse.wst.jsdt.ui.superType.container
-.settings/org.eclipse.wst.jsdt.ui.superType.name
+.settings/
