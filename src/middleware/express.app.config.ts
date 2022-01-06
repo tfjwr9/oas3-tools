@@ -3,6 +3,7 @@
 import * as express from 'express';
 import cookieParser = require('cookie-parser');
 import bodyParser = require('body-parser');
+import cors = require('cors');
 import { SwaggerUI } from './swagger.ui';
 import { SwaggerRouter } from './swagger.router';
 import { SwaggerParameters } from './swagger.parameters';
@@ -22,9 +23,12 @@ export class ExpressAppConfig {
         this.definitionPath = definitionPath;
         this.routingOptions = appOptions.routing;
         this.setOpenApiValidatorOptions(definitionPath, appOptions);
+
 				// Create new express app only if not passed by options
         this.app = appOptions.app || express();
 
+    		this.app.use(cors(appOptions.cors));
+        
         const spec = fs.readFileSync(definitionPath, 'utf8');
         const swaggerDoc = jsyaml.safeLoad(spec);
 
