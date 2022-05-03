@@ -95,4 +95,8 @@ export class ExpressAppConfig {
     public getApp(): express.Application {
         return this.app;
     }
+
+    public setMiddleware(middleware: any[]) {
+        this.app.use(middleware);
+    }
 }
